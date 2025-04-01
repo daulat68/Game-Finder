@@ -1,0 +1,43 @@
+
+.search-input {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .search-input:focus {
+    border-color: #007bff;
+    box-shadow: 0px 3px 10px rgba(0, 123, 255, 0.3);
+  }
+  
+  .bookmark-btn {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .bookmark-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  .left-sidebar {
+    margin-top: 60px;
+  }
+  
+  .main-container {
+    display: flex;
+  }
+  
+  aside {
+    width: 250px;  
+    background-color: #f8f9fa;
+    height: 100vh;
+    padding: 16px;
+  }
+  
+  main {
+    flex-grow: 1;  
+    padding: 16px;
+  }
+  
+  .hero-container {
+    margin-top: 60px;
+  }

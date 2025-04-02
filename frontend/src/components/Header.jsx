@@ -14,7 +14,7 @@ const Header = ({ onSearch }) => {
           GameList
         </a>
 
-        {/* Mobile Toggle Button */}
+        {/* Hamburger Menu*/}
         <button
           className="navbar-toggler"
           type="button"
@@ -27,9 +27,8 @@ const Header = ({ onSearch }) => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Navbar Content */}
+        
         <div className="collapse navbar-collapse justify-content-center" id="navbarContent">
-          {/* 🔍 Search Bar */}
           <div className="d-flex w-50">
             <input
               type="text"
@@ -40,10 +39,9 @@ const Header = ({ onSearch }) => {
           </div>
         </div>
 
-        {/* 📌 Bookmark Button */}
         <div className="d-none d-lg-block">
           <button className="btn btn-primary rounded-pill px-4 fw-bold bookmark-btn">
-            📌 Library
+            BookMark
           </button>
         </div>
       </div>

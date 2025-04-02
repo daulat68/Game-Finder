@@ -1,20 +1,18 @@
 import Header from './components/Header'
 import LeftSidebar from './components/LeftSidebar'
 import HeroSection from './components/HeroSection'
-
+import Bookmark from './components/Bookmark'
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 function App() {
-
   return (
     <>
-    <Header />
+     <Header />
     <div className="d-flex">
-      {/* Left Sidebar */}
       <LeftSidebar />
-      
-      {/* Hero Section */}
       <HeroSection />
-    </div>
+    </div> 
+    <Bookmark/>
   </>
   )
 }

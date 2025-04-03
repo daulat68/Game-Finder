@@ -1,9 +1,11 @@
+const API_KEY = import.meta.env.VITE_RAWG_API_KEY;
+const API_URL= "https://api.rawg.io/api"
+
 export const GameData = async (page=1) => {
-    const API_KEY = "194d1de13bf04a3fa84eedccbd36e579";
-    const API_URL = `https://api.rawg.io/api/games?page=${page}&page_size=20&key=${API_KEY}`;
+    const apigame = `${API_URL}/games?page=${page}&page_size=20&key=${API_KEY}`;
 
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(apigame);
         if (!response.ok) throw new Error("Failed to fetch games");
 
         const data = await response.json();
@@ -13,3 +15,29 @@ export const GameData = async (page=1) => {
         return { results: [], count: 0 };
     }
 };
+
+export const searchGames = async (query) => {
+    try {
+      const response = await fetch(
+        `${API_URL}/games?search=${query}&key=${API_KEY}`
+      );
+      const data = await response.json();
+      return data.results.slice(0, 5);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+      return [];
+    }
+  };
+
+  export const fetchGameDetails = async (id) => {
+    try {
+        const response = await fetch(`${API_URL}/games/${id}?key=${API_KEY}`);
+        if (!response.ok) throw new Error("Failed to fetch game details");
+
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching game:", error);
+        return null;
+    }
+};
+

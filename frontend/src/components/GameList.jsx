@@ -1,51 +1,56 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { GameData } from "../utils/GameData";
 import GameCard from "./GameCard";
 import "./GameList.css";
 
 const GameList = () => {
     const [games, setGames] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(true);
+    const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
-        const loadGames = async () => {
-            const data = await GameData(currentPage);
-            if (data.results) {
-                setGames(data.results);
-                setTotalPages(Math.ceil(data.count / 20));
+        const fetchGames = async () => {
+            setLoading(true);
+            try {
+                const data = await GameData(page);
+                setGames(data.results || []);
+                setTotalPages(Math.ceil(data.count / 20)); // 20 games per page
+            } catch (error) {
+                console.error("Error fetching games:", error);
             }
+            setLoading(false);
         };
-        loadGames();
-    }, [currentPage]);
+
+        fetchGames();
+    }, [page]);
 
     return (
-        <div className="container">
-            <div className="row">
-                {games.length > 0 ? (
-                    games.map((game) => <GameCard key={game.id} game={game} />)
+        <div className="game-list-container container-fluid">
+            <div className="row justify-content-center">
+                {loading ? (
+                    <p className="loading-text">Loading games...</p>
                 ) : (
-                    <p className="loading-text text-center">Loading games...</p>
+                    games.map((game) => <GameCard key={game.id} game={game} />)
                 )}
             </div>
 
-            <div className="pagination d-flex justify-content-center mt-3">
+            {/*  Pagination Controls */}
+            <div className="pagination">
                 <button 
-                    className="btn btn-primary me-2" 
-                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                    disabled={currentPage === 1}
+                    className="btn btn-primary"
+                    onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={page === 1}
                 >
-                    Previous
+                    ⬅ Prev
                 </button>
-
-                <span className="align-self-center">Page {currentPage} of {totalPages}</span>
-
+                <span className="page-number">{page} / {totalPages}</span>
                 <button 
-                    className="btn btn-primary ms-2" 
-                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                    disabled={currentPage === totalPages}
+                    className="btn btn-primary"
+                    onClick={() => setPage((prev) => prev + 1)}
+                    disabled={page === totalPages}
                 >
-                    Next
+                    Next ➡
                 </button>
             </div>
         </div>
@@ -53,4 +58,3 @@ const GameList = () => {
 };
 
 export default GameList;
-

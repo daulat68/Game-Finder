@@ -1,16 +1,17 @@
-.container {
-    max-width: 1200px;
-    margin: auto;
+.game-list-container {
     padding: 20px;
+    margin-left: 250px; /* Adjust for the left sidebar */
 }
 
-.game-list {
+/* Ensures card alignment and consistent height */
+.row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
 
+/* Pagination Styling */
 .pagination {
     display: flex;
     justify-content: center;
@@ -22,4 +23,29 @@
 .loading-text {
     text-align: center;
     color: white;
+}
+
+
+.col-lg-3,
+.col-md-4,
+.col-sm-6,
+.col-12 {
+    display: flex;
+}
+
+.game-cards {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media (max-width: 690px) {
+    .game-list-container {
+        margin-left: 0; 
+    }
+
+    .container-fluid {
+        padding: 0px 10px;
+    }
 }

@@ -5,26 +5,16 @@ import "./Bookmark.css";
 const Bookmark = () => {
     const [bookmarks, setBookmarks] = useState([]);
 
-    useEffect(() => {
-        const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
-        setBookmarks(savedBookmarks);
-    }, []);
-
-    const removeBookmark = (gameId) => {
-        const updatedBookmarks = bookmarks.filter(game => game.id !== gameId);
-        setBookmarks(updatedBookmarks);
-        localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks));
-    };
-
+    
     return (
-        <div className="container mt-4">
+        <div className="container mt-5">
             <h2 className="text-center">Bookmarked Games</h2>
             {bookmarks.length > 0 ? (
                 <div className="row">
                     {bookmarks.map((game) => (
                         <div key={game.id} className="col-md-3">
                             <GameCard game={game} />
-                            <button className="btn btn-danger mt-2" onClick={() => removeBookmark(game.id)}>Remove</button>
+                            <button className="btn btn-danger mt-2" >Remove</button>
                         </div>
                     ))}
                 </div>

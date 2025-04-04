@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { GameData } from "../utils/GameData";
+import { GameData } from "../services/GameData";
 import GameCard from "./GameCard";
-import "./GameList.css";
+import "./styles/GameList.css";
 
 const GameList = () => {
     const [games, setGames] = useState([]);
@@ -31,7 +31,7 @@ const GameList = () => {
                 {loading ? (
                     <p className="loading-text">Loading games...</p>
                 ) : (
-                    games.map((game) => <GameCard key={game.id} game={game} />)
+                    games.map((game) => <GameCard key={game?.id} game={game} />)
                 )}
             </div>
 

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { GameData } from "../utils/GameData";
-import "./ImageSlider.css"; 
+import { GameData } from "../services/GameData";
+import "./styles/ImageSlider.css"; 
 
 const ImageSlider = () => {
     const [games, setGames] = useState([]);
@@ -28,12 +28,12 @@ const ImageSlider = () => {
     };
 
     const handleClick = () => {
-        navigate(`/game/${games[currentIndex].id}`);  // Navigate to the game details page dynamically
+        navigate(`/game/${games[currentIndex]?.id}`);  // Navigate to the game details page dynamically
     };
 
     return (
         <div className="container mt-4">
-            {games.length > 0 ? (
+            {games?.length > 0 ? (
                 <div className="slider-container">
                     
                     <button className="slider-btn left-btn" onClick={prevSlide}>
@@ -41,15 +41,14 @@ const ImageSlider = () => {
                     </button>
 
                     <div className="game-card" onClick={handleClick}>
-                        <img src={games[currentIndex].background_image} alt={games[currentIndex].name} className="game-image" />
+                        <img src={games[currentIndex]?.background_image} alt={games[currentIndex]?.name} className="game-image" />
                         <h2 className="game-title">{games[currentIndex].name}</h2>
                         <div className="thumbnails">
-                            {games[currentIndex].short_screenshots?.map((shot, index) => (
+                            {games[currentIndex]?.short_screenshots?.map((shot, index) => (
                                 <img key={index} src={shot.image} alt={`Screenshot ${index}`} className="thumbnail" />
                             ))}
                         </div>
-                        <p className="game-details">Release Date: {games[currentIndex].released}</p>
-                        <p className="game-details">Rating: ⭐ {games[currentIndex].rating}</p>
+                        <p className="game-details">Rating: ⭐ {games[currentIndex]?.rating}</p>
                     </div>
 
                     <button className="slider-btn right-btn" onClick={nextSlide}>

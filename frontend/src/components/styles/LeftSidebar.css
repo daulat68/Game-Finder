@@ -1,0 +1,25 @@
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #f8f9fa;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    z-index: 1040;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-overlay.open {
+    transform: translateX(0);
+  }
+  
+  .cross-btn .btn-close-red {
+    background: rgb(253, 72, 72);
+  }
+  .cross-btn .btn-close-red:hover {
+    background: rgb(190, 0, 0);
+    color:white;
+  }
+  

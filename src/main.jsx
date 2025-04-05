@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <HeroSection /> },
-      { path: "/bookmarks", element: <ProtectedRoute><Bookmark /></ProtectedRoute> },
+      { path: "/bookmarks", element: (<ProtectedRoute><Bookmark /></ProtectedRoute> )},
       { path: "game/:id", element: <GameDetail /> },
     ],
   },

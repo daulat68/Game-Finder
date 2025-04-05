@@ -1,19 +1,25 @@
 const API_KEY = import.meta.env.VITE_RAWG_API_KEY;
 const API_URL= "https://api.rawg.io/api"
 
-export const GameData = async (page=1) => {
-    const apigame = `${API_URL}/games?page=${page}&page_size=20&key=${API_KEY}`;
+export const GameData = async (page = 1, filters = {}) => {
+  let apiUrl = `${API_URL}/games?page=${page}&page_size=20&key=${API_KEY}`;
 
-    try {
-        const response = await fetch(apigame);
-        if (!response.ok) throw new Error("Failed to fetch games");
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error("Error fetching games:", error);
-        return { results: [], count: 0 };
-    }
-    
+  if (filters.categories) apiUrl += `&genres=${filters.categories}`;
+  if (filters.tags) apiUrl += `&tags=${filters.tags}`;
+  if (filters.year) {
+    apiUrl += `&dates=${filters.year}-01-01,${filters.year}-12-31`;
+  }
+  if (filters.ordered) apiUrl += `&ordering=${filters.ordered}`;
+
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) throw new Error("Failed to fetch games");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching games:", error);
+    return { results: [], count: 0 };
+  }
 };
 
 
@@ -23,12 +29,13 @@ export const searchGames = async (query) => {
       if (!response.ok) throw new Error("Failed to fetch games");
       const data = await response.json();
       
-      return data.results.slice(0, 5);
+      return data.results.slice(0, 6);
     } catch (error) {
       console.error("Error fetching search results:", error);
       return [];
     }
   };
+
 
   export const fetchGameDetails = async (id) => {
     try {
@@ -49,3 +56,17 @@ export const searchGames = async (query) => {
     }
 };
 
+export const fetchFilters = async (query) => {
+
+  try{
+    const response = await fetch(`${API_URL}/${query}?key=${API_KEY}`);
+        if (!response.ok) throw new Error("Failed to fetch games");
+        const data= await response.json();
+        return data.results;
+  }
+  catch (error) {
+    console.error("Error fetching game:", error);
+    return null;
+
+  }
+}

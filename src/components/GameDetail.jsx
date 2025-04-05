@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { fetchGameDetails } from "../services/GameData"; 
 import { useUser } from "@clerk/clerk-react";
 import "./styles/GameDetail.css";
+import GameDetailShimmer from "./ShimmerUI/GameDetailShimmer";
 
 const GameDetail = () => {
     const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const GameDetail = () => {
   };
 
     if (loading) {
-        return <p className="mt-5">Loading game details...</p>;
+        return <div className="mt-5"><GameDetailShimmer/></div>;
     }
 
     if (!game) {

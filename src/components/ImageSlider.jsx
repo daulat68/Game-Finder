@@ -3,6 +3,7 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { GameData } from "../services/GameData";
 import "./styles/ImageSlider.css"; 
+import SliderShimmer from "./ShimmerUI/SliderShimmer";
 
 const ImageSlider = () => {
     const [games, setGames] = useState([]);
@@ -41,7 +42,12 @@ const ImageSlider = () => {
                     </button>
 
                     <div className="game-card" onClick={handleClick}>
-                        <img src={games[currentIndex]?.background_image} alt={games[currentIndex]?.name} className="game-image" />
+                    <div className="game-image"
+                        style={{
+                            backgroundImage: `url(${games[currentIndex]?.background_image})`,
+                        }}
+                        aria-label={games[currentIndex]?.name}/>
+
                         <h2 className="game-title">{games[currentIndex].name}</h2>
                         <div className="thumbnails">
                             {games[currentIndex]?.short_screenshots?.map((shot, index) => (
@@ -56,7 +62,7 @@ const ImageSlider = () => {
                     </button>
                 </div>
             ) : (
-                <p className="text-center">Loading games...</p>
+                <SliderShimmer />
             )}
         </div>
     );

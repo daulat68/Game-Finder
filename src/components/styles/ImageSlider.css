@@ -1,0 +1,172 @@
+.container {
+    margin: auto;
+    text-align: center;
+}
+
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.game-card {
+    width: 80%;
+    text-align: center;
+    background: #222;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.game-image {
+  width: 100%;
+  height: 300px;
+  background-size: cover;           
+  background-position: top center;  
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+
+
+.game-title {
+    font-size: 24px;
+    margin: 10px 0;
+    color: white;
+}
+
+.game-details {
+    font-size: 16px;
+    color: #bbb;
+}
+
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.thumbnail:hover {
+    transform: scale(1.1);
+}
+
+.slider-btn {
+    position: absolute;
+    background: rgba(234, 234, 234, 0.5);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.left-btn {
+    left: 10px;
+}
+
+.right-btn {
+    right: 10px;
+}
+
+
+
+
+
+
+/* CSS FOR SHIMMER IMAGE SLIDER*/   
+.shimmer-wrapper {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background: #d4d4d4;
+    border-radius: 10px;
+  }
+  
+  .shimmer-card {
+    width: 80%;
+    margin: auto;
+    background: #cecece;
+    border-radius: 10px;
+    padding: 10px;
+    animation: shimmer 1.5s infinite;
+    overflow: hidden;
+  }
+  
+  .shimmer-image,
+  .shimmer-title,
+  .shimmer-detail,
+  .shimmer-thumbnail {
+    background: linear-gradient(
+      to right,
+      #eeeeee 0%,
+      #dddddd 20%,
+      #eeeeee 40%,
+      #eeeeee 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 5px;
+  }
+  
+  .shimmer-image {
+    height: 300px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .shimmer-title {
+    height: 24px;
+    width: 60%;
+    margin: 10px auto;
+  }
+  
+  .shimmer-detail {
+    height: 16px;
+    width: 40%;
+    margin: 5px auto;
+  }
+  
+  .shimmer-thumbnail-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .shimmer-thumbnail {
+    width: 60px;
+    height: 40px;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  

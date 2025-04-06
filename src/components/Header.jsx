@@ -50,7 +50,7 @@ const Header = () => {
             src="https://img.icons8.com/ios-filled/50/ffffff/controller.png"
             width="35"
             className="me-2"
-            alt="logo"
+            alt=""
           />
           Game Finder
         </Link>

@@ -8,6 +8,7 @@ import Bookmark from "./components/Bookmark";
 import GameDetail from './components/GameDetail';
 import './index.css';
 import App from './App';
+import Error from './components/Error';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import "bootstrap/dist/js/bootstrap.bundle.min"; 
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
       { path: "/", element: <HeroSection /> },
       {
@@ -55,7 +57,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-// ✅ Render the app
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
     <Provider store={store}>

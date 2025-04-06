@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import GameList from "./GameList";
 import ImageSlider from "./ImageSlider";
 import "./styles/HeroSection.css"

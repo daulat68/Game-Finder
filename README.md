@@ -4,7 +4,9 @@ Game Finder is a responsive React application that allows users to discover, sea
 
 
 ##  Features
-
+    
+-  **Custom Error Page** - This app includes a custom error page that handles unexpected routing errors or broken links using React Router's useRouteError hook.
+-  **Shimmer Loaders** – Custom loading skeletons while data is fetched.
 -  **Game Discovery** – Browse and search for games with a clean UI.
 -  **Bookmarks** – Save and manage favorite games (per-user via Clerk + localStorage).
 -  **Authentication** – Secure sign-in/out using [Clerk].
@@ -14,7 +16,6 @@ Game Finder is a responsive React application that allows users to discover, sea
 -  **State Management** – Handled with Redux Toolkit.
 -  **UI** – Styled with Bootstrap and custom CSS, fully responsive.
 -  **Pagination** – Load more games dynamically using pagination.
--  **Shimmer Loaders** – Custom loading skeletons while data is fetched.
 
 
 ##  Tech Stack

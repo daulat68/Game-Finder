@@ -53,8 +53,29 @@ npm install
 
 ### Start the development server
 ```sh
-npm start
+npm run dev
 ```
 
 ## Visit Site
 https://game-finderbydaulat.netlify.app/
+
+## Docker & CI/CD
+
+This project has a **CI/CD pipeline set up using GitHub Actions** that automates Docker tasks whenever code is pushed to the `main` branch. This ensures that your app is always built, packaged, and ready to deploy. Here’s what the workflow does:
+
+1. **Docker Build** – The workflow checks out the code, installs dependencies, and builds the React app inside a Docker image.
+
+2. **Docker Push** – After building, the workflow pushes the Docker image to Docker Hub. The image is tagged as `latest` and also with the commit SHA for version tracking.
+
+3. **Nginx Configuration** – The Docker image serves the built React app using Nginx with SPA routing, ensuring smooth navigation for all routes.
+
+### Pulling and Running the Docker Image
+
+Once the image is on Docker Hub, you or anyone else can run it locally or on a server:
+
+```bash
+# Pull the latest image
+docker pull daulat68/my-app:latest
+
+# Run the container
+docker run -d -p 8080:80 daulat68/my-app:latest
